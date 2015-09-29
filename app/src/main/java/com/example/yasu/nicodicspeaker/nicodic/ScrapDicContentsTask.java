@@ -10,6 +10,7 @@ import android.widget.ListView;
 
 import com.example.yasu.nicodicspeaker.MainActivity;
 import com.example.yasu.nicodicspeaker.R;
+import com.example.yasu.nicodicspeaker.docomo.AiTalkTask;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -59,6 +60,8 @@ public class ScrapDicContentsTask extends AsyncTask<String, Void, ArrayList<Stri
     protected void onPostExecute(ArrayList<String> list) {
         for(String s : list){
             Log.i(LOG_TAG, s);
+            AiTalkTask talkTask = new AiTalkTask();
+            talkTask.execute(s);
         }
     }
 
