@@ -29,17 +29,15 @@ public class AiTalkTask extends AsyncTask<String, Void, Void> {
         audioTrack.write(data, 0, data.length);
     }
 
-    @Override
-    protected Void doInBackground(String... params) {
-        String sentence = params[0];
-
+    //外から呼ぶ用
+    public void callAiTalkAPI(String word){
         //認証
         AuthApiKey.initializeAuth(API_KEY);
 
         // SSMLテキスト作成
         AiTalkSsml ssml = new AiTalkSsml();
         ssml.startVoice("maki");
-        ssml.addText(sentence);
+        ssml.addText(word);
         ssml.endVoice();
         // SSMLテキストの音声変換
         // 戻り値は音声ＰＣＭリニア（１６ビット１６０００ＢＰＳモノラル）のバイト配列
@@ -47,12 +45,17 @@ public class AiTalkTask extends AsyncTask<String, Void, Void> {
         try {
             byte[] resultData = speech.requestAiTalkSsmlToSound(ssml.makeSsml());
             speech.convertByteOrder16(resultData);
-            Log.i(LOG_TAG, "PCM Audio data load OK");
+            Log.i(LOG_TAG, "PCM Audio data load OK [" + resultData.length + " Bytes]");
             speech(resultData);
         }catch (Exception e){
             e.printStackTrace();
         }
+    }
 
+    @Override
+    protected Void doInBackground(String... params) {
+        String sentence = params[0];
+        callAiTalkAPI(sentence);
         return null;
     }
 

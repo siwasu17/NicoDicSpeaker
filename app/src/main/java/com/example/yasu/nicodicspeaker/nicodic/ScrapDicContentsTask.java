@@ -13,6 +13,7 @@ import com.example.yasu.nicodicspeaker.R;
 import com.example.yasu.nicodicspeaker.docomo.AiTalkTask;
 
 import org.jsoup.Jsoup;
+import org.jsoup.helper.StringUtil;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -40,7 +41,22 @@ public class ScrapDicContentsTask extends AsyncTask<String, Void, ArrayList<Stri
 
         ArrayList<String> list = new ArrayList<>();
         for (Element element : elements) {
-            list.add(element.text());
+            String t = element.text();
+
+            if(StringUtil.isBlank(t)){
+                //空はスキップ
+                continue;
+            }else if(t.equalsIgnoreCase("まだありません")){
+                continue;
+            }else if(t.equalsIgnoreCase("【スポンサーリンク】")){
+                //大百科の記事固有の特殊処理
+                //TODO: パース処理のロジック変えたら最後に来るかどうかわからないので注意
+                list.add("おしまい。");
+            }else{
+                //通常系
+                list.add(t);
+            }
+
         }
         return list;
     }
@@ -50,7 +66,7 @@ public class ScrapDicContentsTask extends AsyncTask<String, Void, ArrayList<Stri
         String word = params[0];
         try {
             return getDicContents(word);
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
@@ -58,7 +74,7 @@ public class ScrapDicContentsTask extends AsyncTask<String, Void, ArrayList<Stri
 
     @Override
     protected void onPostExecute(ArrayList<String> list) {
-        for(String s : list){
+        for (String s : list) {
             Log.i(LOG_TAG, s);
             AiTalkTask talkTask = new AiTalkTask();
             talkTask.execute(s);
