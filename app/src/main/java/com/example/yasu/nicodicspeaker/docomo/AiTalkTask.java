@@ -1,10 +1,13 @@
 package com.example.yasu.nicodicspeaker.docomo;
 
+import android.content.Context;
 import android.media.AudioFormat;
 import android.media.AudioManager;
 import android.media.AudioTrack;
 import android.os.AsyncTask;
 import android.util.Log;
+
+import com.example.yasu.nicodicspeaker.R;
 
 import jp.ne.docomo.smt.dev.aitalk.AiTalkTextToSpeech;
 import jp.ne.docomo.smt.dev.aitalk.data.AiTalkSsml;
@@ -14,8 +17,16 @@ import jp.ne.docomo.smt.dev.common.http.AuthApiKey;
  * Created by yasu on 15/09/29.
  */
 public class AiTalkTask extends AsyncTask<String, Void, Void> {
-    private final String LOG_TAG = this.getClass().getSimpleName();
-    final String API_KEY = "XXX";
+    private final String LOG_TAG = AiTalkTask.class.getSimpleName();
+    private final String API_KEY;
+
+    private Context context;
+
+    public AiTalkTask(Context context) {
+        this.context = context;
+        this.API_KEY = context.getResources().getString(R.string.aitalk_api_key);
+    }
+
 
     public void speech(byte[] data){
         int bps = 16000;

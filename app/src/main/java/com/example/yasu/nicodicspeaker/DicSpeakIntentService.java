@@ -39,7 +39,7 @@ public class DicSpeakIntentService extends IntentService {
                 try {
                     //AsyncTaskをここで呼べないので、生の動作をさせる
                     ArrayList<String> contents =  dicContentsTask.getDicContents(word);
-                    AiTalkTask talkTask = new AiTalkTask();
+                    AiTalkTask talkTask = new AiTalkTask(this);
                     for(String w: contents){
                         talkTask.callAiTalkAPI(w);
                     }

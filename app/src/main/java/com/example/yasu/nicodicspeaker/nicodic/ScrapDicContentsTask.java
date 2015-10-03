@@ -25,7 +25,7 @@ import java.util.ArrayList;
  * Created by yasu on 15/09/29.
  */
 public class ScrapDicContentsTask extends AsyncTask<String, Void, ArrayList<String>> {
-    private final String LOG_TAG = this.getClass().getSimpleName();
+    private final String LOG_TAG = ScrapDicContentsTask.class.getSimpleName();
     private Context context;
 
     public ScrapDicContentsTask(Context context) {
@@ -76,7 +76,7 @@ public class ScrapDicContentsTask extends AsyncTask<String, Void, ArrayList<Stri
     protected void onPostExecute(ArrayList<String> list) {
         for (String s : list) {
             Log.i(LOG_TAG, s);
-            AiTalkTask talkTask = new AiTalkTask();
+            AiTalkTask talkTask = new AiTalkTask(this.context);
             talkTask.execute(s);
         }
     }

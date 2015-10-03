@@ -13,7 +13,7 @@ import com.example.yasu.nicodicspeaker.nicodic.ScrapDicContentsTask;
 import com.example.yasu.nicodicspeaker.nicodic.ScrapNewWordTask;
 
 public class MainActivity extends ActionBarActivity {
-    private final String LOG_TAG = this.getClass().getSimpleName();
+    private final String LOG_TAG = MainActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

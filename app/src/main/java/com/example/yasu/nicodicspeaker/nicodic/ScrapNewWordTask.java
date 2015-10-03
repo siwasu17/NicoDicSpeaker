@@ -21,7 +21,7 @@ import java.util.ArrayList;
 
 
 public class ScrapNewWordTask extends AsyncTask<String, Void, ArrayList<String>> {
-    private final String LOG_TAG = this.getClass().getSimpleName();
+    private final String LOG_TAG = ScrapNewWordTask.class.getSimpleName();
     private Context context;
 
     public ScrapNewWordTask(Context context) {
