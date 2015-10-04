@@ -39,24 +39,29 @@ public class MainActivity extends ActionBarActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        if (id == R.id.action_random) {
-            Log.i(LOG_TAG, "SLIDE SHOW MODE");
+        switch(id) {
+            case R.id.action_settings:
+                Intent settingItt = new Intent(MainActivity.this, SettingsActivity.class);
+                startActivity(settingItt);
 
-            ListView listView = (ListView)findViewById(R.id.nico_word_list);
-            int itemCount = listView.getCount();
-            //とりあえずシーケンシャルに
-            for(int i = 0;i < itemCount;i++){
-                String word = (String) listView.getItemAtPosition(i);
-                Intent itt = new Intent();
-                itt.setClass(this,DicSpeakIntentService.class);
-                itt.setAction(DicSpeakIntentService.ACTION_SPEAK);
-                itt.putExtra(DicSpeakIntentService.EXTRA_PARAM_WORD,word);
-                startService(itt);
-            }
+                break;
+            case R.id.action_random:
+                Log.i(LOG_TAG, "SLIDE SHOW MODE");
+
+                ListView listView = (ListView) findViewById(R.id.nico_word_list);
+                int itemCount = listView.getCount();
+                //とりあえずシーケンシャルに再生
+                for (int i = 0; i < itemCount; i++) {
+                    String word = (String) listView.getItemAtPosition(i);
+                    Intent itt = new Intent();
+                    itt.setClass(MainActivity.this, DicSpeakIntentService.class);
+                    itt.setAction(DicSpeakIntentService.ACTION_SPEAK);
+                    itt.putExtra(DicSpeakIntentService.EXTRA_PARAM_WORD, word);
+                    startService(itt);
+                }
+                break;
+            default:
+                break;
         }
 
         return super.onOptionsItemSelected(item);

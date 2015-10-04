@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListPreference
+        android:key="key_voice_type"
+        android:title="読み上げボイス"
+        android:dialogTitle="読み上げボイスを選択してください"
+        android:entries="@array/list_voice"
+        android:entryValues="@array/list_voice_val"
+        android:defaultValue="maki"
+        />
+
+    <ListPreference
+        android:key="key_voice_pitch"
+        android:title="声の高さ"
+        android:dialogTitle="声の高さを選択してください"
+        android:entries="@array/list_voice_pitch"
+        android:entryValues="@array/list_voice_pitch_val"
+        android:defaultValue="1.0"
+        />
+
+    <ListPreference
+        android:key="key_voice_pitch_range"
+        android:title="声の抑揚"
+        android:dialogTitle="声の抑揚を選択してください"
+        android:entries="@array/list_voice_pitch_range"
+        android:entryValues="@array/list_voice_pitch_range_val"
+        android:defaultValue="1.0"
+        />
+
+    <ListPreference
+        android:key="key_voice_speed"
+        android:title="声のスピード"
+        android:dialogTitle="声のスピードを選択してください"
+        android:entries="@array/list_voice_speed"
+        android:entryValues="@array/list_voice_speed_val"
+        android:defaultValue="1.0"
+        />
+</PreferenceScreen>

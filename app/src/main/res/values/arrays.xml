@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="list_voice">
+        <item>まき</item>
+        <item>のぞみ</item>
+        <item>せいじ</item>
+        <item>あかり</item>
+        <item>あんず</item>
+        <item>ひろし</item>
+        <item>かほ</item>
+        <item>こうたろう</item>
+        <item>ななこ</item>
+        <item>おさむ</item>
+        <item>すみれ</item>
+    </string-array>
+
+    <string-array name="list_voice_val">
+        <item>maki</item>
+        <item>nozomi</item>
+        <item>seiji</item>
+        <item>akari</item>
+        <item>anzu</item>
+        <item>hiroshi</item>
+        <item>kaho</item>
+        <item>koutarou</item>
+        <item>nanako</item>
+        <item>osamu</item>
+        <item>sumire</item>
+    </string-array>
+
+
+    <string-array name="list_voice_pitch">
+        <item>すごく高い</item>
+        <item>高い</item>
+        <item>普通</item>
+        <item>低い</item>
+    </string-array>
+
+    <string-array name="list_voice_pitch_val">
+        <item>2.0</item>
+        <item>1.5</item>
+        <item>1.0</item>
+        <item>0.5</item>
+    </string-array>
+
+    <string-array name="list_voice_pitch_range">
+        <item>強い</item>
+        <item>やや強い</item>
+        <item>普通</item>
+        <item>やや弱い</item>
+        <item>弱い</item>
+    </string-array>
+
+    <string-array name="list_voice_pitch_range_val">
+        <item>2.0</item>
+        <item>1.5</item>
+        <item>1.0</item>
+        <item>0.5</item>
+        <item>0.0</item>
+    </string-array>
+
+
+    <string-array name="list_voice_speed">
+        <item>x4</item>
+        <item>x2</item>
+        <item>x1.5</item>
+        <item>通常</item>
+        <item>x0.5</item>
+    </string-array>
+
+    <string-array name="list_voice_speed_val">
+        <item>4.0</item>
+        <item>2.0</item>
+        <item>1.5</item>
+        <item>1.0</item>
+        <item>0.5</item>
+    </string-array>
+
+
+</resources>
