@@ -27,10 +27,7 @@
         <activity
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings"
-            android:parentActivityName="android.preference.PreferenceActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="android.preference.PreferenceActivity" />
+            android:parentActivityName=".MainActivity" >
         </activity>
     </application>
 
