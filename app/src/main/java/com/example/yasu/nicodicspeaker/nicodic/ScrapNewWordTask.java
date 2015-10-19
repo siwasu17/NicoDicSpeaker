@@ -10,6 +10,7 @@ import android.widget.ListView;
 
 import com.example.yasu.nicodicspeaker.MainActivity;
 import com.example.yasu.nicodicspeaker.R;
+import com.example.yasu.nicodicspeaker.docomo.VoicePlayer;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -74,10 +75,15 @@ public class ScrapNewWordTask extends AsyncTask<String, Void, ArrayList<String>>
                 String item = (String) listView.getItemAtPosition(position);
                 Log.i(LOG_TAG, "SELECT: " + item);
 
+                //一旦音声停止
+                VoicePlayer.getInstance().stop();
+
                 //辞書コンテンツの呼び出し
                 //Taskをネストしていいのだろうか？？
                 ScrapDicContentsTask dicContentsTask = new ScrapDicContentsTask(view.getContext());
                 dicContentsTask.execute(item);
+
+
             }
         });
     }

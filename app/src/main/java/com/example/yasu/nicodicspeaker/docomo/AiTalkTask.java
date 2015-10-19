@@ -12,6 +12,7 @@ import android.util.Log;
 import com.example.yasu.nicodicspeaker.R;
 import com.example.yasu.nicodicspeaker.SettingsActivity;
 
+import de.greenrobot.event.EventBus;
 import jp.ne.docomo.smt.dev.aitalk.AiTalkTextToSpeech;
 import jp.ne.docomo.smt.dev.aitalk.data.AiTalkSsml;
 import jp.ne.docomo.smt.dev.common.http.AuthApiKey;
@@ -92,7 +93,8 @@ public class AiTalkTask extends AsyncTask<String, Void, Void> {
             byte[] resultData = speech.requestAiTalkSsmlToSound(ssml.makeSsml());
             speech.convertByteOrder16(resultData);
             Log.i(LOG_TAG, "PCM Audio data load OK [" + resultData.length + " Bytes]");
-            speech(resultData);
+            //Send voice data
+            EventBus.getDefault().post(new VoiceData(resultData));
         }catch (Exception e){
             e.printStackTrace();
         }

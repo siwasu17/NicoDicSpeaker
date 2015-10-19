@@ -9,8 +9,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
 
+import com.example.yasu.nicodicspeaker.docomo.VoicePlayer;
 import com.example.yasu.nicodicspeaker.nicodic.ScrapDicContentsTask;
 import com.example.yasu.nicodicspeaker.nicodic.ScrapNewWordTask;
+
+import de.greenrobot.event.EventBus;
 
 public class MainActivity extends ActionBarActivity {
     private final String LOG_TAG = MainActivity.class.getSimpleName();
@@ -23,6 +26,22 @@ public class MainActivity extends ActionBarActivity {
         ScrapNewWordTask newWordTask = new ScrapNewWordTask(MainActivity.this);
         newWordTask.execute();
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        //音声プレイヤーにイベントが行くように設定
+        EventBus.getDefault().register(VoicePlayer.getInstance());
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        //音声プレイヤーのイベントバス登録を解除
+        EventBus.getDefault().unregister(VoicePlayer.getInstance());
     }
 
     @Override
