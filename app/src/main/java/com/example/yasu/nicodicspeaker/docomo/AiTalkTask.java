@@ -44,7 +44,6 @@ public class AiTalkTask extends AsyncTask<String, Void, Void> {
         Log.i(LOG_TAG,"PITCH: " + VOICE_PITCH
                 + ", PITCH_RANGE: " + VOICE_PITCH_RANGE
                 + ", SPEED: " + VOICE_SPEED);
-
     }
 
 
