@@ -16,7 +16,6 @@ import android.widget.ListView;
 
 import com.example.yasu.nicodicspeaker.nicodic.ScrapDicContentsTask;
 import com.example.yasu.nicodicspeaker.nicodic.ScrapNewWordLoader;
-import com.example.yasu.nicodicspeaker.nicodic.ScrapNewWordTask;
 
 import java.util.ArrayList;
 
@@ -73,10 +72,6 @@ public class MainActivity extends ActionBarActivity implements LoaderManager.Loa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        /*
-        ScrapNewWordTask newWordTask = new ScrapNewWordTask(MainActivity.this);
-        newWordTask.execute();
-        */
         startNewWordLoad();
     }
 
